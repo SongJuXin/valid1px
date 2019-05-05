@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" data-dpr="1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Title</title>
+    <style>
+       *{
+           margin: 0;
+           padding: 0;
+       }
+
+        .a{
+            width:3.75rem;
+            background: red;
+        }
+        .b{
+            width: 1.87rem;
+            background: yellow;
+        }
+        .c{
+            width: 100px;
+            height: 1px;
+            background: blue;
+        }
+       .d{
+           width: 100px;
+           height: 2px;
+           background: lightblue;
+       }
+       .e{
+           width: 100px;
+           height: 20px;
+           background: darkblue;
+       }
+        .f{
+            border: 1px solid orange;
+            width: 300px;
+            height: 300px;
+            font-size: .16rem;
+
+        }
+        .g{
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<div class="a">a
+
+</div>
+<div class="b">2</div>
+<div class="c"></div>
+<div class="d"></div>
+<div class="e"></div>
+<div class="f">边框1px</div>
+<div class="g"></div>
+</body>
+</html>
+<script>
+    (function (doc, win) {
+        const docEl = doc.documentElement
+        const resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize'
+        const recalc = function () {
+            var clientWidth = docEl.clientWidth
+            if (!clientWidth) return
+            docEl.style.fontSize = (clientWidth / 3.75) + 'px'
+        }
+        if (!doc.addEventListener) return
+        win.addEventListener(resizeEvt, recalc, false)
+        doc.addEventListener('DOMContentLoaded', recalc, false)
+    })(document, window)
+</script>
+<script>
+    document.querySelector('.g').innerHTML='devicePixelRatio:'+window.devicePixelRatio
+</script>
